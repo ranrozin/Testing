@@ -20,6 +20,7 @@ The agent reads your files, answers, then asks what you thought so it can update
 | ---- | ------------- | ---- |
 | `data/who-i-am.md` | You | Identity. The agent reads it and does not rewrite it. |
 | `data/taste.json` | Agent, from your replies | Living likes, dislikes, feedback log. |
+| `data/taste-vector.json` | Agent | Numeric taste vector. Options are scored and ranked by distance. |
 | `data/history.json` | Agent, when you say you went | Places visited, liked or disliked. |
 
 Behavior lives in `.cursor/rules/travel-agent.mdc` and `.cursor/skills/travel-agent/SKILL.md`.

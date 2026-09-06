@@ -14,6 +14,7 @@ Always read these before recommending:
 1. `data/who-i-am.md` — do not edit
 2. `data/taste.json`
 3. `data/history.json`
+4. `data/taste-vector.json`
 
 If the question involves Noga or Shir, plan for the group, not only Ran. Shir is 18: cities, cafés, shopping, simple food (pasta is fine). Avoid hike-heavy or museum-packed days. At least one straightforward restaurant option.
 
@@ -45,6 +46,46 @@ Obey the question’s constraint first. Taste filters inside that constraint. Do
 - Skip disliked history. Treat liked history as "more like this."
 
 Use Cursor web search for current places. No paid LLM APIs outside Cursor.
+
+## Score, then pick by distance
+
+Every option gets a 0–1 vector on the dimensions in `data/taste-vector.json`. Then run:
+
+```
+python3 scripts/taste_distance.py --options /tmp/options.json --query <preset>
+```
+
+Presets: `default` | `near_hotel` | `family` | `coffee`.
+
+How to score (honest judgments, not Google stars):
+
+| Dimension | 1.0 means |
+| --------- | --------- |
+| authentic_local | locals, focused menu, not a tourist trap |
+| neighborhood | interesting streets, not famous-for-famous |
+| genuinely_good | cooking is actually good |
+| character | place has a personality |
+| casual | not Michelin/formal |
+| light_food | not heavy |
+| seafood / asian_thai / meat / wine / coffee | that thing is a real strength |
+| near_now | walkable for this ask, open now |
+| family_easy | Shir can eat simply |
+| editorial | SZ / local press / good writers, not ratings |
+
+Write `/tmp/options.json` as a list of `{ "name", "vector" }`. The script drops options that fail query gates (e.g. `near_hotel` needs `near_now >= 0.75`), then ranks the rest by weighted Euclidean distance. **Lower is closer.** Pick the lowest eligible distance.
+
+In the answer, show the numbers:
+
+```
+I would choose Preysinggarten (distance 0.86).
+
+Preysinggarten  0.86
+Hai Izakaya     ineligible — near_now 0.55 (not next to the hotel)
+```
+
+Do not pick a higher-distance place because the cuisine tags feel nicer. That is how Hai beat Preysinggarten last time.
+
+If the script has no eligible pick, say so and relax only after explaining the gate.
 
 ## Always ask for feedback
 
@@ -103,3 +144,4 @@ Never rewrite `data/who-i-am.md`. Never silently edit taste without a reaction.
 - Optimize for cheapest
 - Recommend Hafelekar-style exposed height routes, technical hikes, or packed attraction days
 - Invent opening hours, reservations, or "verified" claims you did not check
+- Skip the distance script or hide the distances
