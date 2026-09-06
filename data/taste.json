@@ -1,0 +1,70 @@
+{
+  "source": "data/who-i-am.md",
+  "updatedAt": "2026-09-06",
+  "likes": [
+    "interesting neighborhoods over famous sights",
+    "authentic well-chosen places",
+    "quality over quantity",
+    "excellent local restaurants with character",
+    "modern casual restaurants",
+    "seafood",
+    "Asian and Thai food",
+    "good meat",
+    "interesting small restaurants",
+    "genuinely good markets and food halls",
+    "specialty coffee and independent cafes",
+    "neighborhood wine bars where locals go",
+    "good cocktails",
+    "walking cities: architecture, markets, side streets, parks, waterfronts",
+    "easy or moderate nature: drives, lakes, mountains, 1-3 hour walks plus lunch",
+    "slow travel, several nights in one place",
+    "hotels with good location, quiet room, comfort, access to neighborhoods",
+    "morning runs 8-12 km along parks, rivers, waterfronts"
+  ],
+  "dislikes": [
+    "tourist traps and generic recommendations",
+    "checklist sightseeing",
+    "optimizing for cheapest",
+    "huge lists",
+    "Michelin or formal dining as a default",
+    "excessively heavy food",
+    "tourist-area restaurants with huge menus, aggressive hosts, generic reviews",
+    "Italian as the default abroad unless excellent or requested",
+    "Starbucks and generic coffee chains",
+    "flashy nightlife and tourist party venues",
+    "Top 10 attractions just because they are famous",
+    "museum-packed days",
+    "technical, long, or height-focused hikes",
+    "changing hotels every night",
+    "overpacked itineraries",
+    "resorts far from everything",
+    "complicated transport to save a little money"
+  ],
+  "family": {
+    "companions": ["Noga", "Shir"],
+    "planForTheGroup": true,
+    "shir": {
+      "age": 18,
+      "likes": ["cities", "shopping and interesting streets", "cafes", "comfortable experiences", "pasta and simple food"],
+      "dislikes": ["hiking", "long nature excursions", "complicated food", "museum or history-heavy days"],
+      "rule": "On family trips, always include at least one straightforward restaurant option. Nature is fine; do not make every day a hike."
+    }
+  },
+  "decisionOrder": [
+    "genuinely good",
+    "matches our taste",
+    "authentic to the destination",
+    "sensible location and logistics",
+    "enjoyable not stressful",
+    "price"
+  ],
+  "recommendationRules": {
+    "count": "2-4 strong choices plus one clear pick",
+    "alwaysAskFeedback": true,
+    "citeWhyForRan": true,
+    "doNotInventConfidence": true,
+    "sayWhenUnverified": true,
+    "preferEditorialAndLocalConsensusOverGoogleRank"
+  },
+  "log": []
+}
