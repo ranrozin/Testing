@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Distance between Ran's taste vector and scored options. Stdlib only.
+"""Rank options against Ran's taste.
 
-Uses weighted Euclidean distance (lower = closer). Query gates drop options
-that fail a hard constraint, e.g. near_hotel requires near_now >= 0.75.
+Core Euclidean distance (lower = closer).
+Affinity (Thai, wine, …) is a bonus when present; absence is not a penalty.
+near_now / family_easy / tourist-trap are gates, not taste.
+editorial is a confidence label, not a rank feature.
 """
 
 from __future__ import annotations
@@ -18,25 +20,27 @@ def load_json(path: Path):
     return json.loads(path.read_text())
 
 
-def weights_for(profile: dict, query: str) -> dict[str, float]:
-    table = profile["queryWeights"]
-    if query not in table:
-        raise SystemExit(f"unknown query '{query}'. use: {', '.join(table)}")
-    return table[query]
-
-
-def vec(dims: list[str], values: dict[str, float], weights: dict[str, float]) -> list[float]:
+def require_dims(values: dict, dims: list[str], label: str) -> None:
     missing = [d for d in dims if d not in values]
     if missing:
-        raise SystemExit(f"missing dimensions: {', '.join(missing)}")
-    extra = [k for k in values if k not in dims]
-    if extra:
-        raise SystemExit(f"unknown dimensions: {', '.join(extra)}")
+        raise SystemExit(f"{label} missing {', '.join(missing)}")
+
+
+def weighted_vec(dims: list[str], values: dict, weights: dict) -> list[float]:
     return [float(values[d]) * float(weights[d]) for d in dims]
 
 
 def euclidean(a: list[float], b: list[float]) -> float:
     return math.sqrt(sum((x - y) ** 2 for x, y in zip(a, b)))
+
+
+def merged_gates(profile: dict, query: str) -> dict[str, float]:
+    always = dict(profile.get("gates", {}).get("always", {}))
+    extra = profile.get("gates", {}).get(query)
+    if extra is None and query != "always":
+        raise SystemExit(f"unknown query '{query}'")
+    always.update(extra or {})
+    return always
 
 
 def gate_failures(opt: dict, gates: dict[str, float]) -> list[str]:
@@ -49,30 +53,80 @@ def gate_failures(opt: dict, gates: dict[str, float]) -> list[str]:
     return failed
 
 
+def drivers(core: list[str], ran: dict, option: dict, weights: dict, n: int = 3) -> list[dict]:
+    gaps = []
+    for d in core:
+        gap = (float(ran[d]) - float(option[d])) * float(weights[d])
+        if gap > 0.05:
+            gaps.append(
+                {
+                    "dim": d,
+                    "ran": ran[d],
+                    "option": option[d],
+                    "gap": round(gap, 3),
+                }
+            )
+    gaps.sort(key=lambda row: row["gap"], reverse=True)
+    return gaps[:n]
+
+
+def affinity_hits(profile: dict, option: dict, query: str) -> tuple[float, list[str]]:
+    weights = profile["affinityWeights"][query]
+    hits = []
+    bonus = 0.0
+    for dim, weight in weights.items():
+        score = float(option[dim])
+        if weight > 0 and score >= 0.6:
+            bonus += (score - 0.5) * float(weight)
+            hits.append(dim)
+    return bonus * float(profile.get("affinityBonusScale", 0.2)), hits
+
+
+def confidence(editorial: float) -> str:
+    if editorial >= 0.75:
+        return "high"
+    if editorial >= 0.45:
+        return "medium"
+    return "unverified"
+
+
 def rank(profile: dict, options: list[dict], query: str) -> dict:
-    dims = profile["dimensions"]
-    weights = weights_for(profile, query)
-    gates = profile.get("gates", {}).get(query, {})
-    ran = vec(dims, profile["ran"], weights)
+    if query not in profile["affinityWeights"]:
+        raise SystemExit(f"unknown query '{query}'")
+    core = profile["roles"]["core"]
+    all_dims = profile["dimensions"]
+    weights = profile["coreWeights"]
+    gates = merged_gates(profile, query)
+    ran = profile["ran"]
+    require_dims(ran, all_dims, "ran")
+    ran_vec = weighted_vec(core, ran, weights)
     eligible = []
     ineligible = []
     for opt in options:
-        name = opt["name"]
+        require_dims(opt["vector"], all_dims, opt["name"])
         failed = gate_failures(opt, gates)
         if failed:
-            ineligible.append({"name": name, "reason": "; ".join(failed)})
+            ineligible.append({"name": opt["name"], "reason": "; ".join(failed)})
             continue
-        option_vec = vec(dims, opt["vector"], weights)
+        opt_vec = weighted_vec(core, opt["vector"], weights)
+        core_distance = euclidean(ran_vec, opt_vec)
+        bonus, hits = affinity_hits(profile, opt["vector"], query)
+        distance = round(max(0.0, core_distance - bonus), 3)
         eligible.append(
             {
-                "name": name,
-                "distance": round(euclidean(ran, option_vec), 3),
+                "name": opt["name"],
+                "distance": distance,
+                "coreDistance": round(core_distance, 3),
+                "affinityBonus": round(bonus, 3),
+                "affinityHits": hits,
+                "drivers": drivers(core, ran, opt["vector"], weights),
+                "confidence": confidence(float(opt["vector"]["editorial"])),
             }
         )
     eligible.sort(key=lambda row: row["distance"])
     return {
         "query": query,
-        "metric": "weighted_euclidean",
+        "metric": "core_euclidean_minus_affinity_bonus",
         "ranked": eligible,
         "ineligible": ineligible,
         "pick": eligible[0]["name"] if eligible else None,
@@ -85,11 +139,7 @@ def main() -> None:
     parser.add_argument("--options", required=True, type=Path)
     parser.add_argument("--query", default="default")
     args = parser.parse_args()
-    profile = load_json(args.profile)
-    options = load_json(args.options)
-    if not isinstance(options, list):
-        raise SystemExit("options file must be a JSON list of {name, vector}")
-    result = rank(profile, options, args.query)
+    result = rank(load_json(args.profile), load_json(args.options), args.query)
     json.dump(result, sys.stdout, indent=2)
     sys.stdout.write("\n")
     if result["pick"] is None:

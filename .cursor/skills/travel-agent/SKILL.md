@@ -49,7 +49,9 @@ Use Cursor web search for current places. No paid LLM APIs outside Cursor.
 
 ## Score, then pick by distance
 
-Every option gets a 0–1 vector on the dimensions in `data/taste-vector.json`. Then run:
+The vector is **not** magic. It fails if we treat every axis as “more is better.” Cuisine likes are bonuses. Being 12 minutes away is a gate, not a taste.
+
+Score every option 0–1 on the dimensions in `data/taste-vector.json`, write `/tmp/options.json` as `{ "name", "vector" }[]`, then:
 
 ```
 python3 scripts/taste_distance.py --options /tmp/options.json --query <preset>
@@ -57,7 +59,14 @@ python3 scripts/taste_distance.py --options /tmp/options.json --query <preset>
 
 Presets: `default` | `near_hotel` | `family` | `coffee`.
 
-How to score (honest judgments, not Google stars):
+**What the number means**
+
+- **Gates** (must pass): tourist-trap (`authentic_local` ≥ 0.5); `near_hotel` needs `near_now` ≥ 0.75; `family` needs `family_easy`; `coffee` needs `coffee`.
+- **Distance** (lower = closer): only the core six — authentic, neighborhood, genuinely good, character, casual, light food.
+- **Affinity bonus**: Thai / seafood / meat / wine / coffee *reduce* distance when the place is actually good at them. Missing Thai is not a penalty.
+- **editorial**: confidence label (`high` / `medium` / `unverified`), not rank.
+
+How to score (judgments, not Google stars):
 
 | Dimension | 1.0 means |
 | --------- | --------- |
@@ -68,24 +77,30 @@ How to score (honest judgments, not Google stars):
 | casual | not Michelin/formal |
 | light_food | not heavy |
 | seafood / asian_thai / meat / wine / coffee | that thing is a real strength |
-| near_now | walkable for this ask, open now |
+| near_now | walkable for this ask, and open |
 | family_easy | Shir can eat simply |
-| editorial | SZ / local press / good writers, not ratings |
+| editorial | SZ / local press / good writers |
 
-Write `/tmp/options.json` as a list of `{ "name", "vector" }`. The script drops options that fail query gates (e.g. `near_hotel` needs `near_now >= 0.75`), then ranks the rest by weighted Euclidean distance. **Lower is closer.** Pick the lowest eligible distance.
-
-In the answer, show the numbers:
+In the answer, show distance, why (drivers), and confidence:
 
 ```
-I would choose Preysinggarten (distance 0.86).
+I would choose Preysinggarten (distance 0.39, confidence high).
+Won on: neighborhood, wine. Gap vs you: authentic 0.75 vs 1.0.
 
-Preysinggarten  0.86
+Preysinggarten  0.39
 Hai Izakaya     ineligible — near_now 0.55 (not next to the hotel)
 ```
 
-Do not pick a higher-distance place because the cuisine tags feel nicer. That is how Hai beat Preysinggarten last time.
+Do not pick a higher-distance eligible place because the cuisine tags feel nicer.
+If nothing is eligible, say which gate failed before relaxing it.
 
-If the script has no eligible pick, say so and relax only after explaining the gate.
+**Where this still fails (watch for these)**
+
+- The scores are your judgments. Two runs can differ; do not pretend 0.389 is laboratory precision.
+- Wrong preset (`default` instead of `near_hotel`) changes the pick. Classify the question before scoring.
+- Core axes overlap (authentic / neighborhood / character). Do not “rescue” a touristy place by inflating character.
+- Feedback in `taste.json` does not auto-nudge `ran` yet. If he contradicts a pick, say so and adjust the next score by hand.
+- A week of picks will cluster on the same archetype unless you vary slots (coffee vs dinner vs walk).
 
 ## Always ask for feedback
 

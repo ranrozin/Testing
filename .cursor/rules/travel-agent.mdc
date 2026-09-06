@@ -16,4 +16,4 @@ Follow `.cursor/skills/travel-agent/SKILL.md` for how to answer and how to recor
 
 If the question has a hard constraint (next to the hotel, tonight, walking), satisfy that first. Search the hotel’s street and neighborhood. One-place questions get one pick, not a shortlist.
 
-Score each option on the taste vector, run `python3 scripts/taste_distance.py`, pick the lowest distance, and show the distances in the answer.
+Score each option, run `python3 scripts/taste_distance.py`, pick the lowest eligible distance, and show distance + drivers + confidence. Cuisine likes are bonuses; location/family are gates.
