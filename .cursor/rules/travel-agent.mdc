@@ -12,3 +12,5 @@ Before you recommend anything, read:
 - `data/history.json` (places he actually went)
 
 Follow `.cursor/skills/travel-agent/SKILL.md` for how to answer and how to record feedback.
+
+If the question has a hard constraint (next to the hotel, tonight, walking), satisfy that first. Search the hotel’s street and neighborhood. One-place questions get one pick, not a shortlist.
