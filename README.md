@@ -22,5 +22,6 @@ The agent reads your files, answers, then asks what you thought so it can update
 | `data/taste.json` | Agent, from your replies | Living likes, dislikes, feedback log. |
 | `data/taste-vector.json` | Agent | Numeric taste vector. Options are scored and ranked by distance. |
 | `data/history.json` | Agent, when you say you went | Places visited, liked or disliked. |
+| `data/search-cache.json` | Agent | Last 30 days of scored options. Cleared on request. Not committed. |
 
 Behavior lives in `.cursor/rules/travel-agent.mdc` and `.cursor/skills/travel-agent/SKILL.md`.

@@ -47,6 +47,35 @@ Obey the question’s constraint first. Taste filters inside that constraint. Do
 
 Use Cursor web search for current places. No paid LLM APIs outside Cursor.
 
+## Cache searches for 30 days
+
+Before any web search, look up a short key:
+
+```
+python3 scripts/search_cache.py key --preset near_hotel --city Munich --anchor moma1890 --kind eat
+python3 scripts/search_cache.py lookup --key 'near-hotel|munich|moma1890|eat'
+```
+
+Kind is `eat` | `coffee` | `stay` | `do` | `neighborhood`. Anchor is the hotel or area name.
+
+If `hit` is true and `ageDays` < 30, **do not search again**. Reuse the stored options and vectors. Say it is cached from that date.
+
+If miss: search, score, rank, then save only a compact payload (names, short note, vector, distance). No articles, snippets, or URLs.
+
+```
+python3 scripts/search_cache.py save --payload /tmp/cache-entry.json
+```
+
+The cache file is `data/search-cache.json`. It keeps at most 40 entries, 4 options each, 30 days, ~64KB. Old rows are dropped on save.
+
+If Ran says **clear cache** / forget searches / start fresh:
+
+```
+python3 scripts/search_cache.py clear
+```
+
+That deletes every cached search. Do not wait. Confirm it is empty.
+
 ## Score, then pick by distance
 
 The vector is **not** magic. It fails if we treat every axis as “more is better.” Cuisine likes are bonuses. Being 12 minutes away is a gate, not a taste.
