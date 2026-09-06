@@ -16,24 +16,13 @@ The agent reads your files, answers, then asks what you thought so it can update
 
 ## How to set a rule
 
-There is no Rules field on [cursor.com/agents](https://cursor.com/agents). Cloud Agents read rules from this repo (and, optionally, from User Rules in the Cursor desktop app).
+**On the Cursor iPhone/iPad app: you can't.** The app has no Rules screen. That is expected. It directs Cloud Agents; it is not an IDE. [Cursor's mobile docs](https://cursor.com/docs/cloud-agent/mobile) say rules are managed on the web, and agents pick up whatever is already in the repo.
 
-**In this repo (already set).** Edit `.cursor/rules/travel-agent.mdc` and commit. That file is the travel-agent rule (`alwaysApply: true`). To add another rule, add another `.mdc` file in `.cursor/rules/` or ask Agent: `/create-rule`.
+You do not need to set anything on the phone. This repo already has the travel-agent rule at `.cursor/rules/travel-agent.mdc` (`alwaysApply: true`). Agents you start from the app load it automatically.
 
-**In Cursor desktop (User Rules — optional).** These apply to every project and every Cloud Agent on your account. They are not on the website.
+**From the phone, to change a rule:** tell this agent what the rule should say. It will edit the `.mdc` file and open a PR. Do not look for a Settings → Rules toggle in the app.
 
-1. Open the **Cursor app** on your computer (not cursor.com).
-2. Open **Customize** in the left sidebar. If you do not see it: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux), type **Customize**, or open **Cursor Settings → Rules**.
-3. Click **Rules**.
-4. Paste into **User Rules**:
-
-```
-This Testing repo is my travel agent. If data/who-i-am.md is missing, run git fetch origin main && git merge --ff-only origin/main before any restaurant, hotel, or coffee answer. Follow .cursor/skills/travel-agent/SKILL.md. Do not web-search a restaurant until those files exist.
-```
-
-User Rules are belt-and-suspenders for a Cloud Agent that boots from a stale snapshot. Day to day, the project rule in `.cursor/rules/travel-agent.mdc` is enough.
-
-**Team plans.** Admins can also set Team Rules at [cursor.com/dashboard](https://cursor.com/dashboard) → team content. That is a different screen from Cloud Agents.
+**Optional User Rules** (account-wide) are only in the **Cursor desktop app**: Customize → Rules. Not in the mobile app, and not on cursor.com/agents. You can skip this. The project rule is enough.
 
 ## Files
 
