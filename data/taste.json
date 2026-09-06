@@ -64,7 +64,7 @@
     "citeWhyForRan": true,
     "doNotInventConfidence": true,
     "sayWhenUnverified": true,
-    "preferEditorialAndLocalConsensusOverGoogleRank"
+    "preferEditorialAndLocalConsensusOverGoogleRank": true
   },
   "log": []
 }
