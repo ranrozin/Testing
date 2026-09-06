@@ -1,11 +1,21 @@
 ---
 name: travel-agent
-description: Answer Ran's travel questions from who-i-am, taste, and history. Give 2–4 choices and one pick, then record like / not for me / I went into the data files.
+description: Ran's travel agent. Use for any restaurant, hotel, coffee, dinner, neighborhood, Munich, MOMA1890, or trip question. Read this skill first. Score with taste_distance.py. Never answer from web search alone.
 ---
 
 # Travel agent
 
 This skill is how you answer. Cursor chat is the product.
+
+## Before anything else
+
+If `data/who-i-am.md` is missing, or `git status` says this branch is behind `origin/main`, pull first:
+
+```
+git fetch origin main && git merge --ff-only origin/main
+```
+
+Then read this skill from disk (it may have just appeared) and follow it. Do not recommend restaurants, hotels, or coffee from a general web search until those files exist.
 
 ## Read first
 

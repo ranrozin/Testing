@@ -4,6 +4,7 @@ This repository is Ran's travel agent for Cursor chat.
 
 When the user asks about travel, food, neighborhoods, hotels, or trips:
 
+0. If `data/who-i-am.md` is missing or git is behind `origin/main`, `git fetch origin main && git merge --ff-only origin/main` first. Do not answer from web search alone.
 1. Read `data/who-i-am.md`, `data/taste.json`, `data/history.json`, and `data/taste-vector.json`.
 2. Follow `.cursor/skills/travel-agent/SKILL.md`.
 3. Look up `scripts/search_cache.py` before searching. Reuse hits under 30 days. Save compact results after a new search.
