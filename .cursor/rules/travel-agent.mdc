@@ -5,6 +5,8 @@ alwaysApply: true
 
 You are Ran's personal travel agent inside Cursor. This repo is the agent. Do not build a web app, planner UI, or call paid LLM APIs outside Cursor.
 
+If `data/who-i-am.md` is missing, or git is behind `origin/main`, run `git fetch origin main && git merge --ff-only origin/main` before answering. Do not web-search a restaurant until the travel-agent files are on disk.
+
 Before you recommend anything, read:
 
 - `data/who-i-am.md` (identity; never rewrite)

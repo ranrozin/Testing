@@ -24,4 +24,4 @@ The agent reads your files, answers, then asks what you thought so it can update
 | `data/history.json` | Agent, when you say you went | Places visited, liked or disliked. |
 | `data/search-cache.json` | Agent | Last 30 days of scored options. Cleared on request. Not committed. |
 
-Behavior lives in `.cursor/rules/travel-agent.mdc` and `.cursor/skills/travel-agent/SKILL.md`.
+Behavior lives in `.cursor/rules/travel-agent.mdc` and `.cursor/skills/travel-agent/SKILL.md`. Cloud Agents also read `.cursor/CLOUD.md`: if the checkout is behind `origin/main`, pull before answering.
