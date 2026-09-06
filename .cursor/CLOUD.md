@@ -10,4 +10,4 @@ git fetch origin main && git merge --ff-only origin/main
 
 Then follow `.cursor/skills/travel-agent/SKILL.md`. Cache, score with `scripts/taste_distance.py`, show distances. Do not recommend a place until that has run.
 
-How to set rules: the Cursor iOS app has no Rules screen. Edit `.cursor/rules/*.mdc` in this repo (or ask the agent to). Optional User Rules are desktop-only (Customize → Rules). See README.
+How to set rules: Android has no native Cursor app and no Rules screen (cursor.com/agents PWA). Edit `.cursor/rules/*.mdc` in this repo, or ask the agent to. Optional User Rules are desktop-only (Customize → Rules). See README.

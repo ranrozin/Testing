@@ -16,13 +16,13 @@ The agent reads your files, answers, then asks what you thought so it can update
 
 ## How to set a rule
 
-**On the Cursor iPhone/iPad app: you can't.** The app has no Rules screen. That is expected. It directs Cloud Agents; it is not an IDE. [Cursor's mobile docs](https://cursor.com/docs/cloud-agent/mobile) say rules are managed on the web, and agents pick up whatever is already in the repo.
+**On Android: there is no Rules screen.** There is also no native Cursor Android app yet (it is [planned](https://cursor.com/docs/cloud-agent/mobile)). What you have is [cursor.com/agents](https://cursor.com/agents) in Chrome, often installed as a home-screen app. That page starts and reviews Cloud Agents. It is not an IDE, and it has no Customize → Rules.
 
-You do not need to set anything on the phone. This repo already has the travel-agent rule at `.cursor/rules/travel-agent.mdc` (`alwaysApply: true`). Agents you start from the app load it automatically.
+You do not need to set anything on the phone. This repo already has the travel-agent rule at `.cursor/rules/travel-agent.mdc` (`alwaysApply: true`). Agents you start from Android load it automatically.
 
-**From the phone, to change a rule:** tell this agent what the rule should say. It will edit the `.mdc` file and open a PR. Do not look for a Settings → Rules toggle in the app.
+**From the phone, to change a rule:** tell this agent what the rule should say. It will edit the `.mdc` file and open a PR. Do not look for a Settings → Rules toggle in the Android app / PWA.
 
-**Optional User Rules** (account-wide) are only in the **Cursor desktop app**: Customize → Rules. Not in the mobile app, and not on cursor.com/agents. You can skip this. The project rule is enough.
+**Optional User Rules** (account-wide) are only in the **Cursor desktop app**: Customize → Rules. Not on Android, and not on cursor.com/agents. You can skip this. The project rule is enough.
 
 ## Files
 
