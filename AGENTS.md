@@ -4,7 +4,10 @@ This repository is Ran's travel agent for Cursor chat.
 
 When the user asks about travel, food, neighborhoods, hotels, or trips:
 
-1. Read `data/who-i-am.md`, `data/taste.json`, and `data/history.json`.
+1. Read `data/who-i-am.md`, `data/taste.json`, `data/history.json`, and `data/taste-vector.json`.
 2. Follow `.cursor/skills/travel-agent/SKILL.md`.
-3. Answer in chat. Do not build an app.
-4. After suggestions, ask for feedback and write it to the JSON files.
+3. Look up `scripts/search_cache.py` before searching. Reuse hits under 30 days. Save compact results after a new search.
+4. Score options, run `python3 scripts/taste_distance.py`, pick lowest distance, show distances.
+5. Answer in chat. Do not build an app.
+6. After suggestions, ask for feedback and write it to the JSON files.
+7. If the user says to clear the cache, run `python3 scripts/search_cache.py clear`.

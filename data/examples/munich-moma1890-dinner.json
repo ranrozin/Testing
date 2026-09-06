@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Preysinggarten",
+    "vector": {
+      "authentic_local": 0.75,
+      "neighborhood": 0.9,
+      "genuinely_good": 0.8,
+      "character": 0.85,
+      "casual": 0.8,
+      "light_food": 0.75,
+      "seafood": 0.8,
+      "asian_thai": 0.1,
+      "meat": 0.8,
+      "wine": 0.9,
+      "coffee": 0.2,
+      "near_now": 0.95,
+      "family_easy": 0.8,
+      "editorial": 0.9
+    }
+  },
+  {
+    "name": "Hai Seafood Izakaya",
+    "vector": {
+      "authentic_local": 0.85,
+      "neighborhood": 0.8,
+      "genuinely_good": 0.8,
+      "character": 0.85,
+      "casual": 0.9,
+      "light_food": 0.85,
+      "seafood": 0.95,
+      "asian_thai": 0.6,
+      "meat": 0.3,
+      "wine": 0.4,
+      "coffee": 0.1,
+      "near_now": 0.55,
+      "family_easy": 0.4,
+      "editorial": 0.85
+    }
+  },
+  {
+    "name": "Spicery",
+    "vector": {
+      "authentic_local": 0.8,
+      "neighborhood": 0.75,
+      "genuinely_good": 0.7,
+      "character": 0.75,
+      "casual": 0.95,
+      "light_food": 0.7,
+      "seafood": 0.4,
+      "asian_thai": 1.0,
+      "meat": 0.5,
+      "wine": 0.2,
+      "coffee": 0.1,
+      "near_now": 0.5,
+      "family_easy": 0.85,
+      "editorial": 0.5
+    }
+  }
+]
