@@ -1,3 +1,28 @@
 {
-  "places": []
+  "places": [
+    {
+      "name": "Sorry Johnny",
+      "city": "Munich",
+      "kind": "coffee",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Good coffee, cozy vibe."
+    },
+    {
+      "name": "Preysinggarten",
+      "city": "Munich",
+      "kind": "eat",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Really liked it. A bit less casual than usual, but very good."
+    },
+    {
+      "name": "Sweet Spot",
+      "city": "Munich",
+      "kind": "coffee",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "True coffee place, very nice. Roast too light; prefers darker than the current light-roast trend."
+    }
+  ]
 }

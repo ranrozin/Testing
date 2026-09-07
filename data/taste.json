@@ -1,7 +1,10 @@
 {
   "source": "data/who-i-am.md",
-  "updatedAt": "2026-09-06",
+  "updatedAt": "2026-09-07",
   "likes": [
+    "true coffee bars like Sweet Spot (the place, not the light-only roast)",
+    "cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny)",
+    "a well-chosen neighborhood restaurant a bit dressier than usual is fine when the cooking is very good (Preysinggarten)",
     "interesting neighborhoods over famous sights",
     "authentic well-chosen places",
     "quality over quantity",
@@ -30,6 +33,7 @@
     "excessively heavy food",
     "tourist-area restaurants with huge menus, aggressive hosts, generic reviews",
     "Italian as the default abroad unless excellent or requested",
+    "light-only Nordic roast as the only option; prefers a darker or more traditional specialty roast when one exists",
     "Starbucks and generic coffee chains",
     "flashy nightlife and tourist party venues",
     "Top 10 attractions just because they are famous",
@@ -65,17 +69,45 @@
     "doNotInventConfidence": true,
     "sayWhenUnverified": true,
     "preferEditorialAndLocalConsensusOverGoogleRank": true,
-    "nearHotel": "Start on the hotel street. One nice neighborhood restaurant beats a better cuisine match 15 minutes away. One-place questions get one pick."
+    "areaFromQuery": "When the question names an area, search that area first. One well-chosen place there beats a better cuisine match farther out. Do not store the area.",
+    "coffeeRoast": "Prefers darker than the current light-roast trend. Sweet Spot is a true coffee place but exclusively light roast. Before sending him back, check sweetspotkaffee.de/kaffee for the weekly lots. In the cafe they pour two espressos only; ask for the nutty/chocolate (usually South/Central America) guest, not the floral filter. Do not expect a dark roast there unless that page stops saying exclusively light."
   },
   "log": [
     {
       "at": "2026-09-06",
-      "suggestion": "Preysinggarten vs Hai/Spicery for dinner next to MOMA1890",
+      "suggestion": "Preysinggarten vs Hai/Spicery",
       "city": "Munich",
       "kind": "eat",
       "feedback": "like",
-      "note": "Asked for a nice restaurant next to the hotel. Preferred Preysinggarten (Preysingstraße, ~7 min, current Spanish-Mediterranean Haidhausen house) over a taste-optimized shortlist further into the quarter.",
-      "tasteChange": "When the ask is dinner near the hotel, pick the closest well-chosen local room. Do not over-weight cuisine tags or family caveats unless stated."
+      "note": "Preferred Preysinggarten (Spanish-Mediterranean house, character, very good) over a cuisine-tagged shortlist.",
+      "tasteChange": "When the question names an area, pick the best well-chosen place inside it. Do not over-weight cuisine tags. Do not store the area."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Sorry Johnny",
+      "city": "Munich",
+      "kind": "coffee",
+      "feedback": "like",
+      "note": "Went. Good coffee and cozy vibe.",
+      "tasteChange": "Added cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny). Treat as more-like-this."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Preysinggarten",
+      "city": "Munich",
+      "kind": "eat",
+      "feedback": "like",
+      "note": "Went for dinner. Really liked it. A bit less casual than he mostly likes, but very good.",
+      "tasteChange": "Added: a well-chosen neighborhood restaurant a bit dressier than usual is fine when the cooking is very good (Preysinggarten). Casual is still the default, not a veto."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Sweet Spot",
+      "city": "Munich",
+      "kind": "coffee",
+      "feedback": "like",
+      "note": "Went. True coffee place, very nice. Roast too light (he knows it is the trend). Shop policy is exclusively light roast; weekly lots at sweetspotkaffee.de/kaffee.",
+      "tasteChange": "Liked the place, not the light-only cup. Added roast preference and a check: sweetspotkaffee.de/kaffee. Ask in cafe for nutty/chocolate guest espresso, not floral filter. Do not expect dark roast there unless that page changes."
     }
   ]
 }
