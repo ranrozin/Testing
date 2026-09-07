@@ -8,4 +8,4 @@ If `data/who-i-am.md` is missing, or `git status` shows this branch behind `orig
 git fetch origin main && git merge --ff-only origin/main
 ```
 
-Then follow `.cursor/skills/travel-agent/SKILL.md`. Cache, score with `scripts/taste_distance.py`, show distances. Do not recommend a place until that has run.
+Then follow `.cursor/skills/travel-agent/SKILL.md`. Cache, score with `scripts/place_score.py`, show scores. Do not recommend a place until that has run.

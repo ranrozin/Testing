@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tiny 30-day cache of scored options. No search dumps. Stdlib only.
 
-lookup / save / clear. Save prunes expired entries and caps size.
+Keyed from the current question (preset, city, area, kind).
+Not taste, not where he lives, not the agent.
 """
 
 from __future__ import annotations
@@ -96,7 +97,7 @@ def compact_option(raw: dict) -> dict:
         "kind": clip(raw.get("kind"), 20) or "eat",
         "near": clip(raw.get("near"), 80),
         "note": clip(raw.get("note"), MAX_NOTE),
-        "distance": round(float(raw["distance"]), 3) if raw.get("distance") is not None else None,
+        "score": round(float(raw["score"]), 2) if raw.get("score") is not None else None,
         "confidence": clip(raw.get("confidence"), 16),
         "vector": compact_vector(raw["vector"]),
     }
