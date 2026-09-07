@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
-"""Rank options against Ran's taste.
+"""Rank restaurants against Ran's taste.
 
-Core Euclidean distance (lower = closer).
+Place score: Euclidean distance on the restaurant itself
+(authentic, genuinely good, character, casual, light food).
+Lower is closer to him.
+
+Filters, not score: walk time / in-the-asked-area / open (near_now),
+family_easy, neighborhood location. Tourist-trap is authentic_local ≥ 0.5.
+
 Affinity (Thai, wine, …) is a bonus when present; absence is not a penalty.
-near_now / family_easy / tourist-trap are gates, not taste.
 editorial is a confidence label, not a rank feature.
 """
 
