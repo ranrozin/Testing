@@ -2,6 +2,7 @@
   "source": "data/who-i-am.md",
   "updatedAt": "2026-09-07",
   "likes": [
+    "own-roastery specialty coffee bars (Man Versus Machine)",
     "true coffee bars like Sweet Spot (the place, not the light-only roast)",
     "cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny)",
     "a well-chosen neighborhood restaurant a bit dressier than usual is fine when the cooking is very good (Preysinggarten)",
@@ -118,6 +119,15 @@
       "feedback": "not_for_me",
       "note": "Went. Quite bad. Fast-food chain. Disaster.",
       "tasteChange": "Skip fast-food Asian chains even as a convenient backup. Thai like is not a pass for Yum2Take-style counters."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Man Versus Machine",
+      "city": "Munich",
+      "kind": "coffee",
+      "feedback": "like",
+      "note": "Went. A good choice.",
+      "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
     }
   ]
 }
