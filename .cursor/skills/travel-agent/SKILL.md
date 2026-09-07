@@ -1,6 +1,6 @@
 ---
 name: travel-agent
-description: Ran's travel agent. Use for restaurant, hotel, coffee, dinner, neighborhood, or trip questions. Read this skill first. Score with taste_distance.py. Never answer from web search alone.
+description: Ran's travel agent. Use for restaurant, hotel, coffee, dinner, neighborhood, or trip questions. Read this skill first. Score with place_score.py. Never answer from web search alone.
 ---
 
 # Travel agent
@@ -81,7 +81,7 @@ Kind is `eat` | `coffee` | `stay` | `do` | `neighborhood`. City and anchor come 
 
 If `hit` is true and `ageDays` < 30, **do not search again**. Reuse the stored options and vectors. Say it is cached from that date.
 
-If miss: search, score, rank, then save only a compact payload (names, short note, vector, distance). No articles, snippets, or URLs.
+If miss: search, score, rank, then save only a compact payload (names, short note, vector, score). No articles, snippets, or URLs.
 
 ```
 python3 scripts/search_cache.py save --payload /tmp/cache-entry.json
@@ -99,7 +99,7 @@ That deletes every cached search. Do not wait. Confirm it is empty.
 
 ## Score the restaurant, filter on the ask
 
-The number is **how good the place is for him**, not how close it is on a map.
+The number is **how good the place is for him**: 0 to 1, **higher = better**. It is the weighted average of your 0–1 judgments on the core axes, plus a small cuisine bonus. Nothing more — so every score can be explained by pointing at the judgments.
 
 Walk time, “in the old city”, “next to the hotel”, and open-now are **filters**. Do not fold them into the restaurant score. If he asked for the old city, only score places that pass that filter. Then rank those by the restaurant.
 
@@ -108,7 +108,7 @@ Cuisine likes are bonuses. Being 12 minutes away is a gate, not a taste.
 Score every option 0–1 on the dimensions in `data/taste-vector.json`, write `/tmp/options.json` as `{ "name", "vector" }[]`, then:
 
 ```
-python3 scripts/taste_distance.py --options /tmp/options.json --query <preset>
+python3 scripts/place_score.py --options /tmp/options.json --query <preset>
 ```
 
 Presets: `default` | `near_hotel` | `family` | `coffee`.
@@ -118,8 +118,8 @@ When the ask has an area (hotel, old city, here, tonight), use `near_hotel` so `
 **What the number means**
 
 - **Filters / gates** (must pass): tourist-trap (`authentic_local` ≥ 0.5); `near_hotel` needs `near_now` ≥ 0.75 (in the asked area and open); `family` needs `family_easy`; `coffee` needs `coffee`. `neighborhood` is location context (interesting streets vs a landmark terrace). It is not part of the restaurant score.
-- **Place score** (lower = closer to him): only the restaurant — authentic, genuinely good, character, casual, light food.
-- **Affinity bonus**: Thai / seafood / meat / wine / coffee *reduce* distance when the place is actually good at them. Missing Thai is not a penalty.
+- **Place score** (higher = better, roughly: 0.9+ exceptional for him, 0.8 solid, below 0.7 probably skip): only the restaurant — authentic, genuinely good, character, casual, light food.
+- **Affinity bonus**: Thai / seafood / meat / wine / coffee *add* a little when the place is actually good at them. Missing Thai is not a penalty.
 - **editorial**: confidence label (`high` / `medium` / `unverified`), not rank.
 
 How to score (judgments, not Google stars):
@@ -137,22 +137,22 @@ How to score (judgments, not Google stars):
 | family_easy | Shir can eat simply | filter |
 | editorial | SZ / local press / good writers | confidence |
 
-In the answer, show place score, why (drivers), and confidence. If something is out, say the **filter** that failed, not a worse restaurant score:
+In the answer, show place score, why (bonus hits and weak spots), and confidence. If something is out, say the **filter** that failed, not a worse restaurant score:
 
 ```
-I would choose Preysinggarten (place score 0.39, confidence high).
-Won on: genuinely good, wine. Gap vs you: authentic 0.75 vs 1.0.
+I would choose Preysinggarten (place score 0.87, confidence high).
+Won on: wine, character. Weakest axis: authentic 0.75.
 
-Preysinggarten  0.39
+Preysinggarten  0.87
 Hai Izakaya     ineligible — near_now 0.55 (not next to the hotel)
 ```
 
-Do not pick a worse restaurant (higher number) because it is a shorter walk. Walk already decided who got into the list.
+Do not pick a worse restaurant (lower score) because it is a shorter walk. Walk already decided who got into the list.
 If nothing is eligible, say which gate failed before relaxing it.
 
 **Where this still fails (watch for these)**
 
-- The scores are your judgments. Two runs can differ; do not pretend 0.389 is laboratory precision.
+- The scores are your judgments. Two runs can differ; do not pretend 0.87 is laboratory precision.
 - Wrong preset (`default` instead of `near_hotel`) changes who passes the area filter, not what “good” means.
 - Do not punish a restaurant’s score because it sits in the area he asked for (old city, market edge). That was the filter.
 - Core axes overlap (authentic / character). Do not “rescue” a touristy place by inflating character.
@@ -218,4 +218,4 @@ Never rewrite `data/who-i-am.md`. Never silently edit taste without a reaction. 
 - Optimize for cheapest
 - Recommend Hafelekar-style exposed height routes, technical hikes, or packed attraction days
 - Invent opening hours, reservations, or "verified" claims you did not check
-- Skip the distance script or hide the distances
+- Skip the score script or hide the scores

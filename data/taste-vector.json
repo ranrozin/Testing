@@ -1,19 +1,7 @@
 {
-  "note": "Place score is the restaurant. Where he is, walk, and open-now are this question, not this file. Affinity is a bonus when present. editorial is confidence, not rank.",
+  "note": "Score the restaurant only: weighted average of the core axes, 0-1, higher = better. Where he is, walk, open-now, and family are gates from the current question, never the score. Affinity is a small bonus when present. editorial is confidence, not rank.",
   "source": "data/who-i-am.md",
   "updatedAt": "2026-09-07",
-  "roles": {
-    "core": [
-      "authentic_local",
-      "genuinely_good",
-      "character",
-      "casual",
-      "light_food"
-    ],
-    "affinity": ["seafood", "asian_thai", "meat", "wine", "coffee"],
-    "gates_only": ["near_now", "family_easy", "neighborhood"],
-    "confidence": ["editorial"]
-  },
   "dimensions": [
     "authentic_local",
     "neighborhood",
@@ -30,19 +18,6 @@
     "family_easy",
     "editorial"
   ],
-  "ran": {
-    "authentic_local": 1.0,
-    "genuinely_good": 1.0,
-    "character": 0.95,
-    "casual": 0.9,
-    "light_food": 0.8,
-    "seafood": 0.85,
-    "asian_thai": 0.8,
-    "meat": 0.75,
-    "wine": 0.8,
-    "coffee": 0.85,
-    "editorial": 0.9
-  },
   "coreWeights": {
     "authentic_local": 1.3,
     "genuinely_good": 1.3,
