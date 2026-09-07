@@ -156,7 +156,7 @@ If nothing is eligible, say which gate failed before relaxing it.
 - Wrong preset (`default` instead of `near_hotel`) changes who passes the area filter, not what “good” means.
 - Do not punish a restaurant’s score because it sits in the area he asked for (old city, market edge). That was the filter.
 - Core axes overlap (authentic / character). Do not “rescue” a touristy place by inflating character.
-- Feedback in `taste.json` does not auto-nudge `ran` yet. If he contradicts a pick, say so and adjust the next score by hand.
+- Feedback updates `taste.json` and `history.json`, not the numeric weights. When a real pattern emerges across reactions, change `coreWeights` / gates in `taste-vector.json` deliberately and tell him what moved. Never nudge numbers silently from one meal.
 - A week of picks will cluster on the same archetype unless you vary slots (coffee vs dinner vs walk).
 
 ## Always ask for feedback
@@ -173,7 +173,7 @@ Do not wait for a special UI. Chat is enough.
 
 ## Write feedback back
 
-When Ran reacts, update files immediately.
+When Ran reacts, update files immediately. Commit and push these data updates straight to `main` — Ran does not do git. Do not leave feedback sitting on a branch or an unmerged PR. Branches and PRs are only for code or logic changes he should review.
 
 **Like this / not for me** → append to `data/taste.json`:
 
