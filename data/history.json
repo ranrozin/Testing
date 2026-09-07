@@ -23,6 +23,14 @@
       "visitedAt": "2026-09",
       "liked": true,
       "notes": "True coffee place, very nice. Roast too light; prefers darker than the current light-roast trend."
+    },
+    {
+      "name": "Yum2Take",
+      "city": "Munich",
+      "kind": "eat",
+      "visitedAt": "2026-09",
+      "liked": false,
+      "notes": "Quite bad. Fast-food chain. Disaster."
     }
   ]
 }

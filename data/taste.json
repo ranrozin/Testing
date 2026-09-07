@@ -25,6 +25,7 @@
     "morning runs 8-12 km along parks, rivers, waterfronts"
   ],
   "dislikes": [
+    "Yum2Take-style fast-food Asian chains (counter, pager, disaster)",
     "tourist traps and generic recommendations",
     "checklist sightseeing",
     "optimizing for cheapest",
@@ -108,6 +109,15 @@
       "feedback": "like",
       "note": "Went. True coffee place, very nice. Roast too light (he knows it is the trend). Shop policy is exclusively light roast; weekly lots at sweetspotkaffee.de/kaffee.",
       "tasteChange": "Liked the place, not the light-only cup. Added roast preference and a check: sweetspotkaffee.de/kaffee. Ask in cafe for nutty/chocolate guest espresso, not floral filter. Do not expect dark roast there unless that page changes."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Yum2Take",
+      "city": "Munich",
+      "kind": "eat",
+      "feedback": "not_for_me",
+      "note": "Went. Quite bad. Fast-food chain. Disaster.",
+      "tasteChange": "Skip fast-food Asian chains even as a convenient backup. Thai like is not a pass for Yum2Take-style counters."
     }
   ]
 }
