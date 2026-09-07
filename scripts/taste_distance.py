@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 """Rank restaurants against Ran's taste.
 
-Place score: Euclidean distance on the restaurant itself
-(authentic, genuinely good, character, casual, light food).
-Lower is closer to him.
-
-Filters, not score: walk time / in-the-asked-area / open (near_now),
-family_easy, neighborhood location. Tourist-trap is authentic_local ≥ 0.5.
-
-Affinity (Thai, wine, …) is a bonus when present; absence is not a penalty.
-editorial is a confidence label, not a rank feature.
+Place score uses only the restaurant (and his standing taste).
+Where he is, walk, and open-now are this question: they gate options,
+they are not stored on his profile.
 """
 
 from __future__ import annotations
@@ -103,7 +97,8 @@ def rank(profile: dict, options: list[dict], query: str) -> dict:
     weights = profile["coreWeights"]
     gates = merged_gates(profile, query)
     ran = profile["ran"]
-    require_dims(ran, all_dims, "ran")
+    ran_dims = core + profile["roles"]["affinity"] + profile["roles"]["confidence"]
+    require_dims(ran, ran_dims, "ran")
     ran_vec = weighted_vec(core, ran, weights)
     eligible = []
     ineligible = []

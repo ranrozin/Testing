@@ -65,17 +65,17 @@
     "doNotInventConfidence": true,
     "sayWhenUnverified": true,
     "preferEditorialAndLocalConsensusOverGoogleRank": true,
-    "nearHotel": "Start on the hotel street. One nice neighborhood restaurant beats a better cuisine match 15 minutes away. One-place questions get one pick."
+    "areaFromQuery": "When the question names an area, search that area first. One well-chosen place there beats a better cuisine match farther out. Do not store the area."
   },
   "log": [
     {
       "at": "2026-09-06",
-      "suggestion": "Preysinggarten vs Hai/Spicery for dinner next to MOMA1890",
+      "suggestion": "Preysinggarten vs Hai/Spicery",
       "city": "Munich",
       "kind": "eat",
       "feedback": "like",
-      "note": "Asked for a nice restaurant next to the hotel. Preferred Preysinggarten (Preysingstraße, ~7 min, current Spanish-Mediterranean Haidhausen house) over a taste-optimized shortlist further into the quarter.",
-      "tasteChange": "When the ask is dinner near the hotel, pick the closest well-chosen local room. Do not over-weight cuisine tags or family caveats unless stated."
+      "note": "Preferred Preysinggarten (Spanish-Mediterranean house, character, very good) over a cuisine-tagged shortlist. A bit less casual than usual was fine because the cooking was.",
+      "tasteChange": "When the question names an area, pick the best well-chosen place inside it. Do not over-weight cuisine tags. Do not store the area."
     }
   ]
 }

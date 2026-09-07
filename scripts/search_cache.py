@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tiny 30-day cache of scored options. No search dumps. Stdlib only.
 
-lookup / save / clear. Save prunes expired entries and caps size.
+Keyed from the current question (preset, city, area, kind).
+Not taste, not where he lives, not the agent.
 """
 
 from __future__ import annotations

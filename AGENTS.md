@@ -10,5 +10,5 @@ When the user asks about travel, food, neighborhoods, hotels, or trips:
 3. Look up `scripts/search_cache.py` before searching. Reuse hits under 30 days. Save compact results after a new search.
 4. Filter on the ask (area, open, family). Score the restaurant with `python3 scripts/taste_distance.py`, pick the lowest eligible place score, show scores. Do not put walk time into the place score.
 5. Answer in chat. Do not build an app.
-6. After suggestions, ask for feedback and write it to the JSON files.
+6. After suggestions, ask for feedback and write it to the JSON files. Do not write the hotel or current location into those files.
 7. If the user says to clear the cache, run `python3 scripts/search_cache.py clear`.

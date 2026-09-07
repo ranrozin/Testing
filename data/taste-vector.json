@@ -1,5 +1,5 @@
 {
-  "note": "Place score is the restaurant. Walk time, area, and open-now are filters. Affinity (Thai, seafood, wine…) is a bonus when present, never a penalty. editorial is confidence, not rank.",
+  "note": "Place score is the restaurant. Where he is, walk, and open-now are this question, not this file. Affinity is a bonus when present. editorial is confidence, not rank.",
   "source": "data/who-i-am.md",
   "updatedAt": "2026-09-07",
   "roles": {
@@ -32,7 +32,6 @@
   ],
   "ran": {
     "authentic_local": 1.0,
-    "neighborhood": 1.0,
     "genuinely_good": 1.0,
     "character": 0.95,
     "casual": 0.9,
@@ -42,8 +41,6 @@
     "meat": 0.75,
     "wine": 0.8,
     "coffee": 0.85,
-    "near_now": 0.7,
-    "family_easy": 0.55,
     "editorial": 0.9
   },
   "coreWeights": {

@@ -1,11 +1,22 @@
 ---
 name: travel-agent
-description: Ran's travel agent. Use for any restaurant, hotel, coffee, dinner, neighborhood, Munich, MOMA1890, or trip question. Read this skill first. Score with taste_distance.py. Never answer from web search alone.
+description: Ran's travel agent. Use for restaurant, hotel, coffee, dinner, neighborhood, or trip questions. Read this skill first. Score with taste_distance.py. Never answer from web search alone.
 ---
 
 # Travel agent
 
 This skill is how you answer. Cursor chat is the product.
+
+## Query vs agent
+
+Where he is, the hotel, “old city”, “tonight”, walking time, and who is eating are **this message**. They are not part of the agent.
+
+Do not write them to `who-i-am.md`, `taste.json`, `taste-vector.json`, or `history.json`. Not the hotel name, not “8 min from the hotel”, not the current neighborhood.
+
+- **Agent files**: who he is, what he likes, places he actually went (name, city of the *place*, liked or not).
+- **This chat**: where to search, how far he will walk, open now.
+
+Search cache may key off the current question so you do not repeat a web search. That cache is not taste. Never copy a cache anchor into the agent files.
 
 ## Before anything else
 
@@ -32,16 +43,16 @@ If the question involves Noga or Shir, plan for the group, not only Ran. Shir is
 
 Obey the question’s constraint first. Taste filters inside that constraint. Do not wander to a “better” cuisine 15 minutes away when he asked for next to the hotel.
 
-**Near the hotel / here / tonight**
+**Near here / tonight / a named area**
 
-1. Pin the hotel (address + neighborhood). Search that street and quarter first (for MOMA1890: Orleansplatz, Preysingstraße, Wiener Platz, Haidhausen). Do not search a different Munich district.
-2. Prefer the closest well-chosen neighborhood restaurant that is actually open now.
+1. Take the area from **this question** (hotel name, street, old city, whatever he said). Search that. Do not reuse a hotel from an old file.
+2. Prefer a well-chosen place that is actually open now inside that area.
 3. If he asked for *a* restaurant, give **one pick** and at most one backup. Do not hedge with three equal options and family caveats unless he said who is eating.
 4. Only bring family/Shir rules if this message says they are dining together.
 
 **Search so you do not miss the obvious local place**
 
-- Query: hotel name + neighborhood + the actual nearby streets. Not cuisine keywords in another quarter.
+- Query: the area he named + the streets around it. Not cuisine keywords in another quarter.
 - Check current identity of a venue. A 2026 relaunch (new chef/concept, SZ / Abendzeitung / CN Traveller) is a new restaurant. Do not dismiss it on old mixed reviews of the previous operator.
 - Skip station-front and landmark-adjacent tourist rooms. A neighborhood institution on the next street is not a tourist trap just because it is known.
 
@@ -62,11 +73,11 @@ Use Cursor web search for current places. No paid LLM APIs outside Cursor.
 Before any web search, look up a short key:
 
 ```
-python3 scripts/search_cache.py key --preset near_hotel --city Munich --anchor moma1890 --kind eat
-python3 scripts/search_cache.py lookup --key 'near-hotel|munich|moma1890|eat'
+python3 scripts/search_cache.py key --preset near_hotel --city "$CITY_FROM_THIS_QUESTION" --anchor "$AREA_FROM_THIS_QUESTION" --kind eat
+python3 scripts/search_cache.py lookup --key '<that key>'
 ```
 
-Kind is `eat` | `coffee` | `stay` | `do` | `neighborhood`. Anchor is the hotel or area name.
+Kind is `eat` | `coffee` | `stay` | `do` | `neighborhood`. City and anchor come from **this question**, not from taste files.
 
 If `hit` is true and `ageDays` < 30, **do not search again**. Reuse the stored options and vectors. Say it is cached from that date.
 
@@ -166,8 +177,8 @@ When Ran reacts, update files immediately.
 
 **Like this / not for me** → append to `data/taste.json`:
 
-- add a short string to `likes` or `dislikes` if it is a reusable pattern
-- append a `log` entry:
+- add a short string to `likes` or `dislikes` if it is a reusable pattern (about food, rooms, roast, pace — not a hotel or map pin)
+- append a `log` entry (place name + city of the place; no hotel, no walk-from-here):
 
 ```json
 {
@@ -188,15 +199,17 @@ When Ran reacts, update files immediately.
 ```json
 {
   "name": "Place name",
-  "city": "City",
+  "city": "City of the place",
   "kind": "stay | eat | coffee | do | neighborhood",
   "visitedAt": "YYYY-MM",
   "liked": true,
-  "notes": "optional"
+  "notes": "about the place, not walk time from the hotel"
 }
 ```
 
-Never rewrite `data/who-i-am.md`. Never silently edit taste without a reaction.
+`city` is where the restaurant is. Notes are the food and the room. Do not store the hotel, “8 min walk”, or where he was staying.
+
+Never rewrite `data/who-i-am.md`. Never silently edit taste without a reaction. Never persist query location.
 
 ## Do not
 
