@@ -2,6 +2,7 @@
   "source": "data/who-i-am.md",
   "updatedAt": "2026-09-07",
   "likes": [
+    "focused Vietnamese neighborhood kitchens (Nam Giao 31) — good dinner, not a wow",
     "own-roastery specialty coffee bars (Man Versus Machine)",
     "true coffee bars like Sweet Spot (the place, not the light-only roast)",
     "cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny)",
@@ -128,6 +129,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Nam Giao 31",
+      "city": "Munich",
+      "kind": "eat",
+      "feedback": "like",
+      "note": "Went. Good, not amazing, but worth the dinner.",
+      "tasteChange": "Added focused Vietnamese neighborhood kitchens (Nam Giao 31): keep sending this archetype. Solid is enough. Do not treat Asian/Thai like as a wow, and do not rank it with Preysinggarten."
     }
   ]
 }

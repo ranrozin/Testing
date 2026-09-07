@@ -39,6 +39,14 @@
       "visitedAt": "2026-09",
       "liked": true,
       "notes": "Went. A good choice. Own-roastery specialty coffee bar in the Glockenbachviertel."
+    },
+    {
+      "name": "Nam Giao 31",
+      "city": "Munich",
+      "kind": "eat",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Good, not amazing, but worth the dinner."
     }
   ]
 }
