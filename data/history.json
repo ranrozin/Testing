@@ -15,6 +15,14 @@
       "visitedAt": "2026-09",
       "liked": true,
       "notes": "Dinner on Preysingstraße, ~7 min from MOMA1890. Really liked it. A bit less casual than usual, but very good."
+    },
+    {
+      "name": "Sweet Spot",
+      "city": "Munich",
+      "kind": "coffee",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Heiliggeiststraße, off Viktualienmarkt. True coffee place, very nice. Roast too light; he prefers darker than the current light-roast trend."
     }
   ]
 }
