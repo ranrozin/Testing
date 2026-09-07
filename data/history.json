@@ -1,3 +1,12 @@
 {
-  "places": []
+  "places": [
+    {
+      "name": "Sorry Johnny",
+      "city": "Munich",
+      "kind": "coffee",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Preysingstraße, ~8 min from MOMA1890. Good coffee, cozy vibe."
+    }
+  ]
 }

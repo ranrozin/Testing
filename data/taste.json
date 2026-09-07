@@ -1,7 +1,8 @@
 {
   "source": "data/who-i-am.md",
-  "updatedAt": "2026-09-06",
+  "updatedAt": "2026-09-07",
   "likes": [
+    "cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny)",
     "interesting neighborhoods over famous sights",
     "authentic well-chosen places",
     "quality over quantity",
@@ -76,6 +77,15 @@
       "feedback": "like",
       "note": "Asked for a nice restaurant next to the hotel. Preferred Preysinggarten (Preysingstraße, ~7 min, current Spanish-Mediterranean Haidhausen house) over a taste-optimized shortlist further into the quarter.",
       "tasteChange": "When the ask is dinner near the hotel, pick the closest well-chosen local room. Do not over-weight cuisine tags or family caveats unless stated."
+    },
+    {
+      "at": "2026-09-07",
+      "suggestion": "Sorry Johnny",
+      "city": "Munich",
+      "kind": "coffee",
+      "feedback": "like",
+      "note": "Went. Good coffee and cozy vibe. Preysingstraße, ~8 min from MOMA1890. Café Blá was the stretch pick; he took the closer kaffeebar and liked it.",
+      "tasteChange": "Added cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny). Treat this as more-like-this for Haidhausen coffee."
     }
   ]
 }
