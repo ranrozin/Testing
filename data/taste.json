@@ -1,7 +1,8 @@
 {
   "source": "data/who-i-am.md",
-  "updatedAt": "2026-09-07",
+  "updatedAt": "2026-09-08",
   "likes": [
+    "focused Nepali/Himalayan neighborhood kitchens with a real vegetarian section (Himalayan Nepali Kitchen)",
     "focused Vietnamese neighborhood kitchens (Nam Giao 31) — good dinner, not a wow",
     "own-roastery specialty coffee bars (Man Versus Machine)",
     "true coffee bars like Sweet Spot (the place, not the light-only roast)",
@@ -50,6 +51,10 @@
   "family": {
     "companions": ["Noga", "Shir"],
     "planForTheGroup": true,
+    "noga": {
+      "likes": ["vegetarian", "light food"],
+      "rule": "When Noga is dining, prefer a real vegetarian card and lighter cooking. Do not send whole-animal or heavy alpine as the default."
+    },
     "shir": {
       "age": 18,
       "likes": ["cities", "shopping and interesting streets", "cafes", "comfortable experiences", "pasta and simple food"],
@@ -129,6 +134,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-08",
+      "suggestion": "Himalayan Nepali Kitchen",
+      "city": "Innsbruck",
+      "kind": "eat",
+      "feedback": "like",
+      "note": "Went. Very nice.",
+      "tasteChange": "Added focused Nepali/Himalayan neighborhood kitchens with a real vegetarian section. When Noga is eating, prefer vegetarian/light over a heavier 'best' kitchen."
     },
     {
       "at": "2026-09-07",
