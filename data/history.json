@@ -55,6 +55,14 @@
       "visitedAt": "2026-09",
       "liked": true,
       "notes": "Went. Very nice. Focused Nepali kitchen with a real vegetarian section."
+    },
+    {
+      "name": "Unbound Coffee Shop (Anichstraße 44)",
+      "city": "Innsbruck",
+      "kind": "coffee",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Went. Great place. Own-roastery specialty coffee bar."
     }
   ]
 }

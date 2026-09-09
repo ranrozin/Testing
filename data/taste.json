@@ -1,10 +1,10 @@
 {
   "source": "data/who-i-am.md",
-  "updatedAt": "2026-09-08",
+  "updatedAt": "2026-09-09",
   "likes": [
+    "own-roastery specialty coffee bars (Man Versus Machine, Unbound)",
     "focused Nepali/Himalayan neighborhood kitchens with a real vegetarian section (Himalayan Nepali Kitchen)",
     "focused Vietnamese neighborhood kitchens (Nam Giao 31) — good dinner, not a wow",
-    "own-roastery specialty coffee bars (Man Versus Machine)",
     "true coffee bars like Sweet Spot (the place, not the light-only roast)",
     "cozy neighborhood kaffeebars with real specialty coffee (Sorry Johnny)",
     "a well-chosen neighborhood restaurant a bit dressier than usual is fine when the cooking is very good (Preysinggarten)",
@@ -134,6 +134,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-09",
+      "suggestion": "Unbound Coffee Shop",
+      "city": "Innsbruck",
+      "kind": "coffee",
+      "feedback": "like",
+      "note": "Went. Great place.",
+      "tasteChange": "Added Unbound to own-roastery specialty coffee bars (with Man Versus Machine). Same archetype: small, serious, own roast. Treat as strong more-like-this."
     },
     {
       "at": "2026-09-08",
