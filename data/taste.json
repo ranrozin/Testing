@@ -1,7 +1,8 @@
 {
   "source": "data/who-i-am.md",
-  "updatedAt": "2026-09-09",
+  "updatedAt": "2026-09-10",
   "likes": [
+    "focused burrito/taco rooms with a fun sit-down atmosphere (Machete Burrito Kartell) — decent food is enough when the room is good",
     "own-roastery specialty coffee bars (Man Versus Machine, Unbound)",
     "focused Nepali/Himalayan neighborhood kitchens with a real vegetarian section (Himalayan Nepali Kitchen)",
     "focused Vietnamese neighborhood kitchens (Nam Giao 31) — good dinner, not a wow",
@@ -52,8 +53,8 @@
     "companions": ["Noga", "Shir"],
     "planForTheGroup": true,
     "noga": {
-      "likes": ["vegetarian", "light food"],
-      "rule": "When Noga is dining, prefer a real vegetarian card and lighter cooking. Do not send whole-animal or heavy alpine as the default."
+      "likes": ["vegetarian", "fish", "light food"],
+      "rule": "When Noga is dining, she eats fish; vegetarian or fish is enough. Do not default to vegetarian-only restaurants. Skip whole-animal or heavy alpine as the default. A fun casual room is fine."
     },
     "shir": {
       "age": 18,
@@ -134,6 +135,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-10",
+      "suggestion": "Machete Burrito Kartell",
+      "city": "Innsbruck",
+      "kind": "eat",
+      "feedback": "like",
+      "note": "Went. Very good. Fun atmosphere, decent food.",
+      "tasteChange": "Added focused burrito/taco rooms with a fun sit-down atmosphere. Decent food is enough when the room is good. Do not treat this like a Yum2Take-style chain counter. Noga eats fish; do not default to vegetarian-only restaurants."
     },
     {
       "at": "2026-09-09",

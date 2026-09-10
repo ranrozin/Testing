@@ -63,6 +63,14 @@
       "visitedAt": "2026-09",
       "liked": true,
       "notes": "Went. Great place. Own-roastery specialty coffee bar."
+    },
+    {
+      "name": "Machete Burrito Kartell",
+      "city": "Innsbruck",
+      "kind": "eat",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Went. Very good. Fun atmosphere, decent food. Focused burrito/taco room."
     }
   ]
 }
