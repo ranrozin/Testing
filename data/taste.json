@@ -35,6 +35,7 @@
     "checklist sightseeing",
     "optimizing for cheapest",
     "huge lists",
+    "KLIMENTI'S-style fancy host-chef rooms for a normal dinner — open kitchen, tasting-menu vibe, too dressy",
     "Michelin or formal dining as a default",
     "excessively heavy food",
     "tourist-area restaurants with huge menus, aggressive hosts, generic reviews",
@@ -81,6 +82,7 @@
     "preferEditorialAndLocalConsensusOverGoogleRank": true,
     "areaFromQuery": "When the question names an area, search that area first. One well-chosen place there beats a better cuisine match farther out. Do not store the area.",
     "skipVisited": "If he asks for a restaurant tonight or near here, do not pick a place already in history.json unless he asks to go back. Liked visits are more-like-this, not go-again.",
+    "casualTonight": "A normal dinner near the hotel should be casual. Dressier is only fine when he already knows the cooking is worth it (Preysinggarten). Do not send KLIMENTI'S-style fancy as the default.",
     "coffeeRoast": "Prefers darker than the current light-roast trend. Sweet Spot is a true coffee place but exclusively light roast. Before sending him back, check sweetspotkaffee.de/kaffee for the weekly lots. In the cafe they pour two espressos only; ask for the nutty/chocolate (usually South/Central America) guest, not the floral filter. Do not expect a dark roast there unless that page stops saying exclusively light."
   },
   "log": [
@@ -137,6 +139,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-12",
+      "suggestion": "KLIMENTI'S",
+      "city": "Munich",
+      "kind": "eat",
+      "feedback": "not_for_me",
+      "note": "Much too fancy for what he wants tonight.",
+      "tasteChange": "Skip fancy host-chef / tasting-menu rooms for a normal dinner. Casual is the default; Preysinggarten-level dressy only when he already knows the cooking."
     },
     {
       "at": "2026-09-12",
