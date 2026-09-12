@@ -56,7 +56,8 @@
     "planForTheGroup": true,
     "noga": {
       "likes": ["vegetarian", "fish", "light food"],
-      "rule": "When Noga is dining, she eats fish; vegetarian or fish is enough. Do not default to vegetarian-only restaurants. Skip whole-animal or heavy alpine as the default. A fun casual room is fine."
+      "dislikes": ["seafood"],
+      "rule": "When Noga is dining, vegetarian or a simple fish dish on a mixed menu is enough. She really does not like seafood: skip seafood restaurants, izakayas, and seafood-forward menus (shrimp, mussels, calamari). Do not default to vegetarian-only restaurants. Skip whole-animal or heavy alpine as the default. A fun casual room is fine."
     },
     "shir": {
       "age": 18,
@@ -139,6 +140,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-12",
+      "suggestion": "Hai Seafood Izakaya",
+      "city": "Munich",
+      "kind": "eat",
+      "feedback": "not_for_me",
+      "note": "Noga can eat fish but really does not like seafood. A seafood house is the wrong direction.",
+      "tasteChange": "When Noga is dining, skip seafood restaurants and seafood-forward menus. Fish on a mixed menu is OK; izakaya/seafood houses are not."
     },
     {
       "at": "2026-09-12",
