@@ -80,6 +80,7 @@
     "sayWhenUnverified": true,
     "preferEditorialAndLocalConsensusOverGoogleRank": true,
     "areaFromQuery": "When the question names an area, search that area first. One well-chosen place there beats a better cuisine match farther out. Do not store the area.",
+    "skipVisited": "If he asks for a restaurant tonight or near here, do not pick a place already in history.json unless he asks to go back. Liked visits are more-like-this, not go-again.",
     "coffeeRoast": "Prefers darker than the current light-roast trend. Sweet Spot is a true coffee place but exclusively light roast. Before sending him back, check sweetspotkaffee.de/kaffee for the weekly lots. In the cafe they pour two espressos only; ask for the nutty/chocolate (usually South/Central America) guest, not the floral filter. Do not expect a dark roast there unless that page stops saying exclusively light."
   },
   "log": [
@@ -136,6 +137,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-12",
+      "suggestion": "Preysinggarten tonight",
+      "city": "Munich",
+      "kind": "eat",
+      "feedback": "not_for_me",
+      "note": "Already been. Do not re-recommend a visited restaurant as tonight's option unless he asks to go back.",
+      "tasteChange": "Skip history.json visits when he asks for a new dinner. Liked places are more-like-this, not go-again."
     },
     {
       "at": "2026-09-12",
