@@ -71,6 +71,14 @@
       "visitedAt": "2026-09",
       "liked": true,
       "notes": "Went. Very good. Fun atmosphere, decent food. Focused burrito/taco room."
+    },
+    {
+      "name": "haepinest",
+      "city": "Innsbruck",
+      "kind": "coffee",
+      "visitedAt": "2026-09",
+      "liked": true,
+      "notes": "Went. Nice, cozy, homey. Decent coffee — the room more than the cup."
     }
   ]
 }

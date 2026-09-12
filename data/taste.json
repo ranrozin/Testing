@@ -1,7 +1,8 @@
 {
   "source": "data/who-i-am.md",
-  "updatedAt": "2026-09-10",
+  "updatedAt": "2026-09-12",
   "likes": [
+    "cozy homey café rooms (haepinest) — decent coffee is enough when the room feels like home",
     "focused burrito/taco rooms with a fun sit-down atmosphere (Machete Burrito Kartell) — decent food is enough when the room is good",
     "own-roastery specialty coffee bars (Man Versus Machine, Unbound)",
     "focused Nepali/Himalayan neighborhood kitchens with a real vegetarian section (Himalayan Nepali Kitchen)",
@@ -135,6 +136,15 @@
       "feedback": "like",
       "note": "Went. A good choice.",
       "tasteChange": "Added own-roastery specialty coffee bars (Man Versus Machine). Fourth liked coffee place of the same archetype: small, serious, own identity. Treat as strong more-like-this."
+    },
+    {
+      "at": "2026-09-12",
+      "suggestion": "haepinest",
+      "city": "Innsbruck",
+      "kind": "coffee",
+      "feedback": "like",
+      "note": "Went. Nice, cozy and home. Decent coffee.",
+      "tasteChange": "Added cozy homey café rooms (haepinest): decent coffee is enough when the room feels like home. Do not rank it with Unbound on the cup."
     },
     {
       "at": "2026-09-10",
